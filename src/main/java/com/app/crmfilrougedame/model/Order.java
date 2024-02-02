@@ -83,15 +83,6 @@ public class Order {
         this.unitPrice = unitPrice;
     }
 
-//    public Integer getState() {
-//        return state;
-//    }
-//
-//    public void setState(Integer state) {
-//        this.state = state;
-//    }
-
-
     public OrderState getState() {
         return state;
     }

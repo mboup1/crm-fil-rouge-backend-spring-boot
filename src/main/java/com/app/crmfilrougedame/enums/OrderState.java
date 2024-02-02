@@ -5,4 +5,3 @@ public enum OrderState {
     OPTION,
     CONFIRMED
 }
-

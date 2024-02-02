@@ -21,8 +21,6 @@ public class Client {
     private String zipCode;
     private String city;
     private String country;
-
-//    @Enumerated(EnumType.STRING)
     private Boolean state;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
@@ -124,20 +122,15 @@ public class Client {
         this.country = country;
     }
 
+
     public ClientState getState() {
-        if (state == true) {
-            return ClientState.ACTIVE;
-        }
-        return ClientState.INACTIVE;
+        return state ? ClientState.ACTIVE : ClientState.INACTIVE;
     }
 
     public void setState(ClientState state) {
-
-        if (state == ClientState.ACTIVE) {
-            this.state=true;
-        }
-        this.state=false;
+        this.state = (state == ClientState.ACTIVE);
     }
+
 
     public List<Order> getOrders() {
         return orders;
