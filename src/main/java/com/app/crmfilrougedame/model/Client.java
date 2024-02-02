@@ -31,7 +31,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(String companyName, String firstName, String lastName, String email, String phone, String address, String zipCode, String city, String country, Boolean state) {
+    public Client(String companyName, String firstName, String lastName, String email, String phone, String address, String zipCode, String city, String country, ClientState state) {
         this.companyName = companyName;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -41,7 +41,7 @@ public class Client {
         this.zipCode = zipCode;
         this.city = city;
         this.country = country;
-        this.state = state;
+        setState(state);
     }
 
     public Long getId() {
@@ -124,12 +124,19 @@ public class Client {
         this.country = country;
     }
 
-    public Boolean getState() {
-        return state;
+    public ClientState getState() {
+        if (state == true) {
+            return ClientState.ACTIVE;
+        }
+        return ClientState.INACTIVE;
     }
 
-    public void setState(Boolean state) {
-        this.state = state;
+    public void setState(ClientState state) {
+
+        if (state == ClientState.ACTIVE) {
+            this.state=true;
+        }
+        this.state=false;
     }
 
     public List<Order> getOrders() {

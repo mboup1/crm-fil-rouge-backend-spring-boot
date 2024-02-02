@@ -23,8 +23,9 @@ public class Order {
     @Formula("unit_price * nb_days * 1.20")
     private Double totalWithTaxe;
 
-//    @Enumerated(EnumType.STRING)
-    private Integer state;
+    @Enumerated(EnumType.ORDINAL)
+    @Column(columnDefinition = "int4")
+    private OrderState state;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
@@ -34,7 +35,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(String typePresta, String designation, int nbDays, double unitPrice, Integer state) {
+    public Order(String typePresta, String designation, int nbDays, double unitPrice, OrderState state) {
         this.typePresta = typePresta;
         this.designation = designation;
         this.nbDays = nbDays;
@@ -82,11 +83,20 @@ public class Order {
         this.unitPrice = unitPrice;
     }
 
-    public Integer getState() {
+//    public Integer getState() {
+//        return state;
+//    }
+//
+//    public void setState(Integer state) {
+//        this.state = state;
+//    }
+
+
+    public OrderState getState() {
         return state;
     }
 
-    public void setState(Integer state) {
+    public void setState(OrderState state) {
         this.state = state;
     }
 
