@@ -32,10 +32,17 @@ public class ClientService {
 
         if (existingClientOptional.isPresent()) {
             Client existingClient = existingClientOptional.get();
-            // Update fields based on your requirements
+
             existingClient.setCompanyName(updatedClient.getCompanyName());
             existingClient.setFirstName(updatedClient.getFirstName());
-            // ... update other fields
+            existingClient.setLastName(updatedClient.getLastName());
+            existingClient.setEmail(updatedClient.getEmail());
+            existingClient.setPhone(updatedClient.getPhone());
+            existingClient.setAddress(updatedClient.getAddress());
+            existingClient.setZipCode(updatedClient.getZipCode());
+            existingClient.setCity(updatedClient.getCity());
+            existingClient.setCountry(updatedClient.getCountry());
+            existingClient.setState(updatedClient.getState());
 
             return Optional.of(clientRepository.save(existingClient));
         } else {
