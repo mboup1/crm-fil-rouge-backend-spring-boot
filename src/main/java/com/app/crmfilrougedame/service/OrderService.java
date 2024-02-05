@@ -32,10 +32,13 @@ public class OrderService {
 
         if (existingOrderOptional.isPresent()) {
             Order existingOrder = existingOrderOptional.get();
-            // Update fields based on your requirements
+
             existingOrder.setTypePresta(updatedOrder.getTypePresta());
             existingOrder.setDesignation(updatedOrder.getDesignation());
-            // ... update other fields
+            existingOrder.setDesignation(updatedOrder.getDesignation());
+            existingOrder.setNbDays(updatedOrder.getNbDays());
+            existingOrder.setUnitPrice(updatedOrder.getUnitPrice());
+            existingOrder.setState(updatedOrder.getState());
 
             return Optional.of(orderRepository.save(existingOrder));
         } else {
