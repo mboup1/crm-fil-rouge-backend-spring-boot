@@ -28,13 +28,27 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<Order> createOrder(@RequestBody Order order) {
+    public ResponseEntity<?> createOrder(@RequestBody Order order) {
+        if (order.getTypePresta() == null || order.getTypePresta().isEmpty() ||
+                order.getDesignation() == null || order.getDesignation().isEmpty() ||
+                order.getNbDays() <= 0 ||
+                order.getUnitPrice() <= 0.0) {
+            return ResponseEntity.badRequest().body("Tous les champs doivent être remplis et valides");
+        }
+
         Order createdOrder = orderService.createOrder(order);
         return ResponseEntity.ok(createdOrder);
     }
 
+
     @PutMapping("/{id}")
-    public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order updatedOrder) {
+    public ResponseEntity<?> updateOrder(@PathVariable Long id, @RequestBody Order updatedOrder) {
+        if (updatedOrder.getTypePresta() == null || updatedOrder.getTypePresta().isEmpty() ||
+                updatedOrder.getDesignation() == null || updatedOrder.getDesignation().isEmpty() ||
+                updatedOrder.getNbDays() <= 0 ||
+                updatedOrder.getUnitPrice() <= 0.0) {
+            return ResponseEntity.badRequest().body("Tous les champs doivent être remplis et valides");
+        }
         return orderService.updateOrder(id, updatedOrder)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
