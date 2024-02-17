@@ -17,6 +17,9 @@ public class Order {
     private int nbDays;
     private double unitPrice;
 
+    private Long idClient;
+
+
     @Formula("unit_price * nb_days")
     private Double totalExcludeTaxe;
 
@@ -40,6 +43,15 @@ public class Order {
         this.designation = designation;
         this.nbDays = nbDays;
         this.unitPrice = unitPrice;
+        this.state = state;
+    }
+
+    public Order(String typePresta, String designation, int nbDays, double unitPrice, Long idClient, OrderState state) {
+        this.typePresta = typePresta;
+        this.designation = designation;
+        this.nbDays = nbDays;
+        this.unitPrice = unitPrice;
+        this.idClient = idClient;
         this.state = state;
     }
 
@@ -115,6 +127,14 @@ public class Order {
         this.totalWithTaxe = totalWithTaxe;
     }
 
+    public Long getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(Long idClient) {
+        this.idClient = idClient;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -123,6 +143,9 @@ public class Order {
                 ", designation='" + designation + '\'' +
                 ", nbDays=" + nbDays +
                 ", unitPrice=" + unitPrice +
+                ", clientId=" + idClient +
+                ", totalExcludeTaxe=" + totalExcludeTaxe +
+                ", totalWithTaxe=" + totalWithTaxe +
                 ", state=" + state +
                 ", client=" + client +
                 '}';
